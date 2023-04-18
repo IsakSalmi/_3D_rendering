@@ -1,4 +1,5 @@
-import _3D_Container.*;
+import _3D_Container.tetrahedron;
+import _3D_Container.triangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,25 @@ public class _3D_rendering{
     int[] y = new int[1];
     Matrix3D Transform;
 
-
+    List<tetrahedron> Create_tetrahedron(List<tetrahedron> tris){
+        tris.add(new tetrahedron(new triangle(100, 100, 100),
+                new triangle(-100, -100, 100),
+                new triangle(-100, 100, -100),
+                Color.WHITE));
+        tris.add(new tetrahedron(new triangle(100, 100, 100),
+                new triangle(-100, -100, 100),
+                new triangle(100, -100, -100),
+                Color.RED));
+        tris.add(new tetrahedron(new triangle(-100, 100, -100),
+                new triangle(100, -100, -100),
+                new triangle(100, 100, 100),
+                Color.GREEN));
+        tris.add(new tetrahedron(new triangle(-100, 100, -100),
+                new triangle(100, -100, -100),
+                new triangle(-100, -100, 100),
+                Color.BLUE));
+        return tris;
+    }
     private void Render(){
         JPanel renderPanel = new JPanel() {
             public void paintComponent(Graphics g) {
@@ -25,22 +44,8 @@ public class _3D_rendering{
 
 
                 List<tetrahedron> tris = new ArrayList<>();
-                tris.add(new tetrahedron(new triangle(100, 100, 100),
-                        new triangle(-100, -100, 100),
-                        new triangle(-100, 100, -100),
-                        Color.WHITE));
-                tris.add(new tetrahedron(new triangle(100, 100, 100),
-                        new triangle(-100, -100, 100),
-                        new triangle(100, -100, -100),
-                        Color.RED));
-                tris.add(new tetrahedron(new triangle(-100, 100, -100),
-                        new triangle(100, -100, -100),
-                        new triangle(100, 100, 100),
-                        Color.GREEN));
-                tris.add(new tetrahedron(new triangle(-100, 100, -100),
-                        new triangle(100, -100, -100),
-                        new triangle(-100, -100, 100),
-                        Color.BLUE));
+                tris = Create_tetrahedron(tris);
+
 
                 double heading = Math.toRadians(x[0]);
                 Matrix3D headingTransform = new Matrix3D(new double[]{
