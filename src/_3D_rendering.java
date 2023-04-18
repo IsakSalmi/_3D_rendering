@@ -24,22 +24,22 @@ public class _3D_rendering{
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
 
-                List<Triangle> tris = new ArrayList<>();
-                tris.add(new Triangle(new Vertex(100, 100, 100),
-                        new Vertex(-100, -100, 100),
-                        new Vertex(-100, 100, -100),
+                List<tetrahedron> tris = new ArrayList<>();
+                tris.add(new tetrahedron(new triangle(100, 100, 100),
+                        new triangle(-100, -100, 100),
+                        new triangle(-100, 100, -100),
                         Color.WHITE));
-                tris.add(new Triangle(new Vertex(100, 100, 100),
-                        new Vertex(-100, -100, 100),
-                        new Vertex(100, -100, -100),
+                tris.add(new tetrahedron(new triangle(100, 100, 100),
+                        new triangle(-100, -100, 100),
+                        new triangle(100, -100, -100),
                         Color.RED));
-                tris.add(new Triangle(new Vertex(-100, 100, -100),
-                        new Vertex(100, -100, -100),
-                        new Vertex(100, 100, 100),
+                tris.add(new tetrahedron(new triangle(-100, 100, -100),
+                        new triangle(100, -100, -100),
+                        new triangle(100, 100, 100),
                         Color.GREEN));
-                tris.add(new Triangle(new Vertex(-100, 100, -100),
-                        new Vertex(100, -100, -100),
-                        new Vertex(-100, -100, 100),
+                tris.add(new tetrahedron(new triangle(-100, 100, -100),
+                        new triangle(100, -100, -100),
+                        new triangle(-100, -100, 100),
                         Color.BLUE));
 
                 double heading = Math.toRadians(x[0]);
@@ -58,10 +58,10 @@ public class _3D_rendering{
 
                 g2.translate(getWidth() / 2, getHeight() / 2);
                 g2.setColor(Color.WHITE);
-                for (Triangle t : tris) {
-                    Vertex v1 = Transform.transform(t.v1);
-                    Vertex v2 = Transform.transform(t.v2);
-                    Vertex v3 = Transform.transform(t.v3);
+                for (tetrahedron t : tris) {
+                    triangle v1 = Transform.transform(t.v1);
+                    triangle v2 = Transform.transform(t.v2);
+                    triangle v3 = Transform.transform(t.v3);
                     Path2D path = new Path2D.Double();
                     path.moveTo(v1.x, v1.y);
                     path.lineTo(v2.x, v2.y);

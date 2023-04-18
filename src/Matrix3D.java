@@ -1,4 +1,4 @@
-import _3D_Container.Vertex;
+import _3D_Container.triangle;
 
 public class Matrix3D {
      double[] values;
@@ -19,8 +19,8 @@ public class Matrix3D {
         return new Matrix3D(result);
     }
 
-    Vertex transform(Vertex in){
-        return new Vertex(
+    triangle transform(triangle in){
+        return new triangle(
                 in.x * values[0] + in.y * values[3] + in.z * values[6],
                 in.x * values[1] + in.y * values[4] + in.z * values[7],
                 in.x * values[2] + in.y * values[5] + in.z * values[8]
