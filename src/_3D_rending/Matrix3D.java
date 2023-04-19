@@ -1,4 +1,6 @@
-import _3D_Container.triangle;
+package _3D_rending;
+
+import _3D_rending._3D_Container.Dot;
 
 public class Matrix3D {
      double[] values;
@@ -19,8 +21,8 @@ public class Matrix3D {
         return new Matrix3D(result);
     }
 
-    triangle transform(triangle in){
-        return new triangle(
+    Dot transform(Dot in){
+        return new Dot(
                 in.x * values[0] + in.y * values[3] + in.z * values[6],
                 in.x * values[1] + in.y * values[4] + in.z * values[7],
                 in.x * values[2] + in.y * values[5] + in.z * values[8]
